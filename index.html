@@ -1,39 +1,94 @@
-https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap    position:fixed; inset:0; pointer-events:none; z-index:999;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity:.35;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostafa Shaban | Data Analyst</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #00d2ff;
+            font-size: 3rem;
+            margin-bottom: 5px;
+        }
+        h2 {
+            border-bottom: 2px solid #00d2ff;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        p {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+        .contact a {
+            color: #00d2ff;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #00d2ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mostafa Shaban.</h1>
+        <p>Data Analyst & Freelance Coach — Cairo, Egypt</p>
+        
+        <div class="contact">
+            <a href="mailto:mostafa.m.sh3ban@gmail.com">Email Me</a>
+            <a href="https://www.linkedin.com/in/mostafa-sh3ban" target="_blank">LinkedIn</a>
+        </div>
 
-  /* ─── NAV ─────────────────────────────────────────────────── */
-  nav {
-    position: fixed; top:0; left:0; right:0; height: var(--nav-h);
-    background: rgba(245,242,236,.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5vw;
-    z-index: 100;
-  }
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    letter-spacing: -.02em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display:flex; gap:2rem; list-style:none; }
-  .nav-links a {
-    font-size: .85rem; font-weight:500;
-    text-decoration:none; color: var(--muted);
-    letter-spacing:.04em; text-transform: uppercase;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--teal); }
+        <h2>About Me</h2>
+        <p>Turning Raw Data into Real Decisions & Real Careers. Detail-oriented Data Analyst blending practical experience in Power BI, SQL, and Excel with a track record of mentoring 300+ early-career freelancers.</p>
 
-  /* ─── SECTION SHELL ──────────────────────────────────────── */
-  section {
-    max-width: 1100px;
-    margin: 0 auto;
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Freelancing Coach</h3>
+            <p><strong>ITIDA Gigs Program / DEPI</strong> | Sep 2025 – Present</p>
+            <ul>
+                <li>Mentored 300+ participants and reviewed 3,000+ freelance proposals.</li>
+                <li>Developed Power BI dashboards to track participant progress.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Data Analyst Specialist</h3>
+            <p><strong>DEPI (Power BI Program)</strong> | Oct 2024 – May 2025</p>
+            <ul>
+                <li>Utilized Power Query, DAX, and data modeling to integrate datasets.</li>
+                <li>Built interactive dashboards that improved reporting efficiency by 25%.</li>
+            </ul>
+        </div>
+
+        <h2>Skills</h2>
+        <div class="card">
+            <p><strong>Tools:</strong> Power BI, Advanced Excel, SQL (SSMS, MySQL), Tableau.</p>
+            <p><strong>Expertise:</strong> Data Visualization, Data Modeling, Freelancing Strategy.</p>
+        </div>
+    </div>
+</body>
+</html>
     padding: 120px 5vw 80px;
   }
   .section-label {
