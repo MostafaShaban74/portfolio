@@ -1,0 +1,418 @@
+/* ============================================================
+   GLASSMORPHISM — iOS Style
+   ============================================================ */
+
+/* ── Enhanced Glass Variables ── */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --glass-blur: blur(20px);
+  --glass-saturate: saturate(180%);
+  --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(15, 20, 30, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Base Glass Mixin ── */
+.glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-blur) var(--glass-saturate) !important;
+  -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.15) !important;
+}
+
+/* ── Navbar Glass ── */
+.navbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.1),
+              0 4px 24px rgba(0,0,0,0.06) !important;
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(13, 17, 23, 0.7) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* ── Section Backgrounds ── */
+section {
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Glass Cards (Enhanced) ── */
+.glass-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  border-radius: 20px !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.glass-card:hover {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-accent) !important;
+  box-shadow: var(--shadow-hover),
+              inset 0 1px 0 rgba(255,255,255,0.2),
+              0 0 0 1px var(--border-accent) !important;
+  transform: translateY(-6px) !important;
+}
+
+/* ── Project Cards (iOS Widget Style) ── */
+.project-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.15) !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  border-color: var(--border-accent) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15),
+              inset 0 1px 0 rgba(255,255,255,0.2),
+              0 0 0 1px var(--border-accent) !important;
+}
+
+[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 20px 60px rgba(139,92,246,0.2),
+              inset 0 1px 0 rgba(255,255,255,0.08),
+              0 0 0 1px rgba(139,92,246,0.4) !important;
+}
+
+/* ── Project Placeholder (iOS Icon Style) ── */
+.project-preview-placeholder {
+  display: flex !important;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient backgrounds per project */
+.project-placeholder-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.project-placeholder-2 {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+.project-placeholder-3 {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.project-preview-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.1) 0%,
+    transparent 50%,
+    rgba(0,0,0,0.1) 100%
+  );
+}
+
+.project-preview-placeholder .placeholder-icon {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  position: relative;
+  z-index: 1;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.project-preview-placeholder .placeholder-label {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+/* ── Skill Tags (Glass Pills) ── */
+.tag {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 20px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 6px 16px !important;
+}
+
+.tag:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.35),
+              inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── Buttons (Glass Style) ── */
+.btn-primary {
+  background: var(--accent-gradient) !important;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.35),
+              inset 0 1px 0 rgba(255,255,255,0.2) !important;
+  border-radius: 12px !important;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(59,130,246,0.5),
+              inset 0 1px 0 rgba(255,255,255,0.25) !important;
+  transform: translateY(-3px) !important;
+}
+
+.btn-secondary {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 12px !important;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent) !important;
+  background: rgba(37,99,235,0.08) !important;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.15),
+              inset 0 1px 0 rgba(255,255,255,0.15) !important;
+}
+
+/* ── Nav Buttons ── */
+.nav-btn {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 10px !important;
+}
+
+.nav-btn:hover {
+  border-color: var(--accent) !important;
+  background: rgba(37,99,235,0.1) !important;
+}
+
+/* ── Social Links ── */
+.social-link {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 12px !important;
+}
+
+.social-link:hover {
+  background: rgba(37,99,235,0.1) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.2),
+              inset 0 1px 0 rgba(255,255,255,0.15) !important;
+}
+
+/* ── Timeline Cards ── */
+.timeline-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 20px !important;
+}
+
+/* ── Cert Cards ── */
+.cert-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.1) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--border-accent) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1),
+              inset 0 1px 0 rgba(255,255,255,0.15) !important;
+}
+
+/* ── Form Inputs ── */
+.form-group input,
+.form-group textarea {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05) !important;
+  border-radius: 12px !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent) !important;
+  background: var(--glass-bg) !important;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12),
+              inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+/* ── Stat Cards ── */
+.stat-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--glass-shadow),
+              inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  border-radius: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--border-accent) !important;
+}
+
+/* ── Mobile Menu ── */
+.mobile-menu {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+/* ── Qual Tabs ── */
+.qual-tab:not(.active) {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+/* ── Badge ── */
+.available-badge {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(34,197,94,0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1),
+              0 0 20px rgba(34,197,94,0.1) !important;
+}
+
+/* ── Hero Photo Ring ── */
+.hero-photo-ring::before {
+  background: var(--accent-gradient) !important;
+  filter: blur(0) !important;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+/* ── Ambient Background Blobs ── */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.07;
+}
+
+body::before {
+  width: 500px;
+  height: 500px;
+  background: var(--accent);
+  top: -100px;
+  left: -100px;
+  animation: ambientMove1 12s ease-in-out infinite;
+}
+
+body::after {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-2);
+  bottom: -100px;
+  right: -100px;
+  animation: ambientMove2 10s ease-in-out infinite;
+}
+
+[data-theme="dark"] body::before { opacity: 0.12; }
+[data-theme="dark"] body::after { opacity: 0.1; }
+
+@keyframes ambientMove1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(60px, 40px); }
+}
+
+@keyframes ambientMove2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, -60px); }
+}
+
+/* ── Scrollbar (iOS Thin) ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(59,130,246,0.2);
+  color: var(--text-primary);
+}
