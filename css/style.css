@@ -254,12 +254,9 @@ section {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid transparent;
-  background: var(--accent-gradient) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
+  border: 2px solid var(--accent);
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .nav-logo img:hover { transform: scale(1.08); }
