@@ -161,13 +161,15 @@ function renderProjects(projects, lang) {
 
   const el = document.getElementById('projects-grid');
   if (!el) return;
-  el.innerHTML = projects.items.map(p => `
+  const icons = ['📊','🛒','🥑'];
+  const gradients = ['project-placeholder-1','project-placeholder-2','project-placeholder-3'];
+  el.innerHTML = projects.items.map((p, i) => `
     <div class="project-card glass-card reveal">
       <div class="project-preview">
         <img src="${p.image}" alt="${p.title}"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="project-preview-placeholder project-placeholder-${i+1}" style="display:none">
-          <span class="placeholder-icon">${['📊','🛒','🥑'][i]}</span>
+        <div class="project-preview-placeholder ${gradients[i]}" style="display:none">
+          <span class="placeholder-icon">${icons[i]}</span>
           <span class="placeholder-label">${p.tags.join(' · ')}</span>
         </div>
         <div class="project-overlay">🔗 ${lang === 'ar' ? 'عرض مباشر' : 'View Live'}</div>
