@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 /* ── CSS Variables ── */
 :root {
@@ -81,12 +81,12 @@ body[dir="rtl"] { font-family: 'Inter', 'Segoe UI', sans-serif; }
 
 /* ── Typography ── */
 h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.mono { font-family: 'JetBrains Mono', monospace; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
 
 /* ── Gradient Text ── */
 .gradient-text {
@@ -110,7 +110,7 @@ section {
 }
 
 .section-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -170,7 +170,7 @@ section {
   gap: 8px;
   padding: 12px 24px;
   border-radius: 10px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
@@ -210,7 +210,7 @@ section {
   background: var(--tag-bg);
   border: 1px solid var(--tag-border);
   border-radius: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--accent);
   transition: all 0.2s ease;
@@ -269,7 +269,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   color: white;
   font-size: 1rem;
@@ -283,7 +283,7 @@ section {
 }
 
 .nav-links a {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -319,7 +319,7 @@ section {
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.875rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
 }
 
@@ -381,7 +381,7 @@ section {
 .mobile-menu.open { display: flex; }
 
 .mobile-menu a {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-primary);
@@ -454,7 +454,7 @@ section {
   background: var(--badge-bg);
   border: 1px solid var(--badge-color);
   border-radius: 20px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--badge-color);
   margin-bottom: 24px;
@@ -507,7 +507,7 @@ section {
 }
 
 .hero-role {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -528,7 +528,7 @@ section {
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 .hero-tagline {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: 600;
   color: var(--accent);
@@ -637,7 +637,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 4rem;
   color: white;
@@ -698,7 +698,7 @@ section {
 }
 
 .stat-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 2rem;
   font-weight: 700;
   background: var(--accent-gradient);
@@ -721,7 +721,7 @@ section {
 .skills-categories { display: flex; flex-direction: column; gap: 32px; }
 
 .skill-category-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -786,7 +786,7 @@ section {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: white;
@@ -800,14 +800,14 @@ section {
 .project-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
 
 .project-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .project-impact {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
   color: var(--accent);
   background: var(--tag-bg);
@@ -838,7 +838,7 @@ section {
   padding: 7px 14px;
   border-radius: 8px;
   font-size: 0.8rem;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -883,7 +883,7 @@ section {
   border-radius: 10px;
   border: 1.5px solid var(--border);
   background: transparent;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -956,14 +956,14 @@ section {
 }
 
 .timeline-role {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .timeline-period {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--accent);
   background: var(--tag-bg);
@@ -1013,7 +1013,7 @@ section {
 #certifications { background: var(--bg-secondary); }
 
 .cert-section-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -1034,7 +1034,7 @@ section {
 .cert-card { padding: 20px; }
 
 .cert-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -1043,7 +1043,7 @@ section {
 }
 
 .cert-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--text-muted);
 }
@@ -1051,7 +1051,7 @@ section {
 .cert-year {
   display: inline-block;
   margin-top: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--accent);
   background: var(--tag-bg);
@@ -1072,7 +1072,7 @@ section {
 .contact-info-card { padding: 32px; }
 
 .contact-info-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 24px;
@@ -1155,14 +1155,14 @@ footer {
 }
 
 .footer-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .footer-tagline {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
   color: var(--accent);
   margin-top: 4px;
@@ -1189,7 +1189,7 @@ footer {
 .footer-copy {
   font-size: 0.8rem;
   color: var(--text-muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 /* ============================================================
@@ -1286,7 +1286,7 @@ footer {
 .hero-stat-item { text-align: left; }
 [dir="rtl"] .hero-stat-item { text-align: right; }
 .hero-stat-number {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent);
@@ -1314,7 +1314,7 @@ footer {
 .service-card { padding: 28px 22px; text-align: center; }
 .service-icon { font-size: 2rem; margin-bottom: 12px; }
 .service-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -1326,3 +1326,8 @@ footer {
   line-height: 1.7;
 }
 .services-cta-wrapper { text-align: center; }
+
+a.nav-btn { text-decoration: none; }
+@media (max-width: 900px) {
+  a.nav-btn[title="Services"], a.nav-btn[title="All Links"] { display: none; }
+}
