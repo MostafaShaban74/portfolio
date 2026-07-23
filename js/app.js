@@ -86,7 +86,10 @@ function renderNav(nav) {
   if (mob) {
     mob.innerHTML = nav.links.map((link, i) => `
       <a href="#${nav.anchors[i]}" onclick="closeMobileMenu()">${link}</a>
-    `).join('');
+    `).join('') + `
+      <a href="services.html">🛠️ Services</a>
+      <a href="links.html">🔗 All Links</a>
+    `;
   }
   attachNavLinks();
 }
