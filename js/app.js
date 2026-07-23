@@ -376,7 +376,7 @@ function renderContact(contact) {
 
 // ── Footer ──
 function renderFooter(footer, nav) {
-  setText('footer-name', 'Mostafa Shaaban');
+  setText('footer-name', 'Mostafa Shaban');
   setText('footer-tagline', footer.tagline);
   setText('footer-copy', footer.copy);
 
@@ -384,7 +384,10 @@ function renderFooter(footer, nav) {
   if (linksEl) {
     linksEl.innerHTML = nav.links.map((link, i) => `
       <a href="#${nav.anchors[i]}">${link}</a>
-    `).join('');
+    `).join('') + `
+      <a href="services.html">Services</a>
+      <a href="links.html">Links</a>
+    `;
   }
 }
 

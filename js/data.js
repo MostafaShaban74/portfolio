@@ -12,7 +12,7 @@ const DATA = {
     hero: {
       badge: "Available for work",
       greeting: "Hi, I'm",
-      name: "Mostafa Shaaban",
+      name: "Mostafa Shaban",
       roles: ["Data Analyst", "Freelance Analytics Coach", "Power BI Developer", "Financial Data Analyst"],
       tagline: "We Turn Numbers into Decisions.",
       brief: "Data Analyst with a financial background in Accounting, hands-on experience in Power BI, SQL & Python. Coached 300+ freelancers and reviewed 3,000+ proposals.",
@@ -27,7 +27,7 @@ const DATA = {
     about: {
       section_label: "About",
       title: "Who I am",
-      bio: `I'm Mostafa Shaaban, a Data Analyst based in Cairo, Egypt, with a unique blend of financial knowledge and data expertise. My Accounting background at Capital University gives me a distinct edge — I don't just analyze data, I understand the business and financial context behind it.
+      bio: `I'm Mostafa Shaban, a Data Analyst based in Cairo, Egypt, with a unique blend of financial knowledge and data expertise. My Accounting background at Capital University gives me a distinct edge — I don't just analyze data, I understand the business and financial context behind it.
 
 From there, I expanded into Power BI, SQL, Python, and Advanced Excel — building dashboards and pipelines that connect financial insights to real business decisions. Beyond analysis, I've had the privilege of coaching 300+ freelancers through ITIDA's Gigs Program and Career 180, reviewing 3,000+ proposals and helping professionals break into Egypt's growing digital economy.
 
@@ -248,7 +248,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
     },
     footer: {
       tagline: "Data Analyst",
-      copy: "© 2026 Mostafa Shaaban. All rights reserved."
+      copy: "© 2026 Mostafa Shaban. All rights reserved."
     }
   },
 
