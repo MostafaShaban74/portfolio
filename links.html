@@ -57,9 +57,7 @@
 
   <div id="links-list"></div>
 
-  <div class="links-footer">
-    <a href="index.html" id="links-back">← Portfolio</a> · © 2026
-  </div>
+  <div class="links-footer">© 2026 Mostafa Shaaban. All rights reserved.</div>
 </div>
 
 <script>
@@ -85,11 +83,11 @@
         { icon: ICONS.portfolio, label: "Portfolio", url: "index.html" },
         { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
         { icon: ICONS.github, label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: ICONS.email, label: "Email", url: "mailto:m0stafa.m.sh3ban@gmail.com" },
         { icon: ICONS.whatsapp, label: "WhatsApp", url: "https://wa.me/201116009820" },
         { icon: ICONS.telegram, label: "Telegram", url: "https://t.me/M_SH_18" },
-        { icon: ICONS.instagram, label: "Instagram", url: "#" },
         { icon: ICONS.facebook, label: "Facebook", url: "#" },
-        { icon: ICONS.email, label: "Email", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+        { icon: ICONS.instagram, label: "Instagram", url: "#" }
       ]
     },
     ar: {
@@ -99,11 +97,11 @@
         { icon: ICONS.portfolio, label: "البورتفوليو", url: "index.html" },
         { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
         { icon: ICONS.github, label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: ICONS.email, label: "إيميل", url: "mailto:m0stafa.m.sh3ban@gmail.com" },
         { icon: ICONS.whatsapp, label: "واتساب", url: "https://wa.me/201116009820" },
         { icon: ICONS.telegram, label: "تليجرام", url: "https://t.me/M_SH_18" },
-        { icon: ICONS.instagram, label: "انستجرام", url: "#" },
         { icon: ICONS.facebook, label: "فيسبوك", url: "#" },
-        { icon: ICONS.email, label: "إيميل", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+        { icon: ICONS.instagram, label: "انستجرام", url: "#" }
       ]
     }
   };
@@ -127,7 +125,6 @@
   function render() {
     const d = LINKS_DATA[currentLang];
     document.getElementById('links-tagline').textContent = d.tagline;
-    document.getElementById('links-back').textContent = d.back;
     document.getElementById('links-list').innerHTML = d.items.map((i, idx) => `
       <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card reveal" style="transition-delay:${idx * 0.06}s">
         <span class="link-icon">${i.icon}</span>
