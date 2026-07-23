@@ -20,22 +20,23 @@
     .links-photo-placeholder {
       width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px;
       background: var(--accent-gradient); display: flex; align-items: center; justify-content: center;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 2rem; color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 2rem; color: white;
     }
     .links-name {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 700;
       color: var(--text-primary); margin-bottom: 4px;
     }
     .links-tagline { color: var(--accent); font-size: 0.9rem; margin-bottom: 32px; }
     .link-item {
       display: flex; align-items: center; gap: 14px; padding: 16px 20px;
       margin-bottom: 12px; text-decoration: none; color: var(--text-primary);
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
       transition: all 0.25s ease;
     }
     .link-item:hover { transform: translateY(-3px); border-color: var(--border-accent); }
-    .link-icon { font-size: 1.3rem; width: 28px; text-align: center; }
-    .links-footer { margin-top: 32px; font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .link-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .link-icon svg { width: 100%; height: 100%; }
+    .links-footer { margin-top: 32px; font-size: 0.8rem; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; }
     .links-footer a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
@@ -47,12 +48,12 @@
     <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
   </div>
 
-  <img src="assets/images/photo.jpg" alt="Mostafa Shaaban" class="links-photo"
+  <img src="assets/images/photo.jpg" alt="Mostafa Shaaban" class="links-photo reveal"
     onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
-  <div class="links-photo-placeholder" id="links-photo-ph" style="display:none">MS</div>
+  <div class="links-photo-placeholder reveal" id="links-photo-ph" style="display:none">MS</div>
 
-  <div class="links-name">Mostafa Shaaban</div>
-  <div class="links-tagline" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
+  <div class="links-name reveal" id="links-name">Mostafa Shaaban</div>
+  <div class="links-tagline reveal" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
 
   <div id="links-list"></div>
 
@@ -65,33 +66,44 @@
   let currentLang = 'en';
   let currentTheme = localStorage.getItem('theme') || 'dark';
 
+  const ICONS = {
+    portfolio: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`,
+    linkedin: `<svg viewBox="0 0 24 24" width="22" height="22" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+    github: `<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>`,
+    whatsapp: `<svg viewBox="0 0 24 24" width="22" height="22" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.346 5.001L2 22.003l5.135-1.334a9.958 9.958 0 0 0 4.87 1.31h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.18-2.929-7.068a9.937 9.937 0 0 0-7.073-2.911zm5.85 15.75a8.264 8.264 0 0 1-5.85 2.421h-.003a8.276 8.276 0 0 1-4.214-1.152l-.302-.18-3.048.793.814-2.97-.197-.306a8.264 8.264 0 0 1-1.264-4.414c0-4.567 3.716-8.284 8.267-8.284a8.223 8.223 0 0 1 5.85 2.428 8.223 8.223 0 0 1 2.418 5.856 8.264 8.264 0 0 1-2.47 5.808z"/></svg>`,
+    telegram: `<svg viewBox="0 0 24 24" width="22" height="22" fill="#26A5E4"><path d="M23.91 3.79 20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.55-1.1.55l.4-5.6L20.7 6.5c.4-.36-.1-.55-.6-.2L7.4 14.02l-5.5-1.73c-1.2-.37-1.22-1.2.26-1.78l21.5-8.28c1-.37 1.87.25 1.55 1.55z"/></svg>`,
+    instagram: `<svg viewBox="0 0 24 24" width="22" height="22"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDD55"/><stop offset="50%" stop-color="#FF543E"/><stop offset="100%" stop-color="#C837AB"/></linearGradient></defs><path fill="url(#ig)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>`,
+    facebook: `<svg viewBox="0 0 24 24" width="22" height="22" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+    email: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`
+  };
+
   const LINKS_DATA = {
     en: {
       tagline: "Data Analyst | Freelance Analytics Coach",
       back: "← Portfolio",
       items: [
-        { icon: "🌐", label: "Portfolio", url: "index.html" },
-        { icon: "💼", label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
-        { icon: "💻", label: "GitHub", url: "https://github.com/MostafaShaban74" },
-        { icon: "📱", label: "WhatsApp", url: "https://wa.me/201116009820" },
-        { icon: "✈️", label: "Telegram", url: "https://t.me/M_SH_18" },
-        { icon: "📸", label: "Instagram", url: "#" },
-        { icon: "📘", label: "Facebook", url: "#" },
-        { icon: "📧", label: "Email", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+        { icon: ICONS.portfolio, label: "Portfolio", url: "index.html" },
+        { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
+        { icon: ICONS.github, label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: ICONS.whatsapp, label: "WhatsApp", url: "https://wa.me/201116009820" },
+        { icon: ICONS.telegram, label: "Telegram", url: "https://t.me/M_SH_18" },
+        { icon: ICONS.instagram, label: "Instagram", url: "#" },
+        { icon: ICONS.facebook, label: "Facebook", url: "#" },
+        { icon: ICONS.email, label: "Email", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
       ]
     },
     ar: {
       tagline: "محلل بيانات | مدرب فريلانس",
       back: "← البورتفوليو",
       items: [
-        { icon: "🌐", label: "البورتفوليو", url: "index.html" },
-        { icon: "💼", label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
-        { icon: "💻", label: "GitHub", url: "https://github.com/MostafaShaban74" },
-        { icon: "📱", label: "واتساب", url: "https://wa.me/201116009820" },
-        { icon: "✈️", label: "تليجرام", url: "https://t.me/M_SH_18" },
-        { icon: "📸", label: "انستجرام", url: "#" },
-        { icon: "📘", label: "فيسبوك", url: "#" },
-        { icon: "📧", label: "إيميل", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+        { icon: ICONS.portfolio, label: "البورتفوليو", url: "index.html" },
+        { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
+        { icon: ICONS.github, label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: ICONS.whatsapp, label: "واتساب", url: "https://wa.me/201116009820" },
+        { icon: ICONS.telegram, label: "تليجرام", url: "https://t.me/M_SH_18" },
+        { icon: ICONS.instagram, label: "انستجرام", url: "#" },
+        { icon: ICONS.facebook, label: "فيسبوك", url: "#" },
+        { icon: ICONS.email, label: "إيميل", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
       ]
     }
   };
@@ -116,12 +128,15 @@
     const d = LINKS_DATA[currentLang];
     document.getElementById('links-tagline').textContent = d.tagline;
     document.getElementById('links-back').textContent = d.back;
-    document.getElementById('links-list').innerHTML = d.items.map(i => `
-      <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card">
+    document.getElementById('links-list').innerHTML = d.items.map((i, idx) => `
+      <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card reveal" style="transition-delay:${idx * 0.06}s">
         <span class="link-icon">${i.icon}</span>
         <span>${i.label}</span>
       </a>
     `).join('');
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }, 100);
   }
 
   document.addEventListener('DOMContentLoaded', () => {

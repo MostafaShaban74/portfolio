@@ -13,7 +13,7 @@
     .svc-page { padding-top: 68px; }
     .svc-back {
       display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
       color: var(--text-secondary); text-decoration: none; margin: 32px 0 8px;
       transition: color 0.2s;
     }
@@ -31,7 +31,7 @@
     .svc-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
     .svc-icon { font-size: 1.8rem; }
     .svc-card h2 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem;
       color: var(--text-primary);
     }
     .svc-summary { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 18px; }
@@ -45,7 +45,7 @@
     [dir="rtl"] .svc-list li::before { left: auto; right: 0; }
     .svc-cta { text-align: center; padding: 50px 0 80px; }
     .svc-cta h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem;
       margin-bottom: 20px; color: var(--text-primary);
     }
   </style>
@@ -72,14 +72,14 @@
   <div class="container">
     <a href="index.html" class="svc-back" id="svc-back">← Back to Portfolio</a>
 
-    <div class="svc-hero">
+    <div class="svc-hero reveal">
       <h1 id="svc-hero-title">What I Can Do For You</h1>
       <p id="svc-hero-sub"></p>
     </div>
 
     <div class="svc-sections" id="svc-sections"></div>
 
-    <div class="svc-cta glass-card">
+    <div class="svc-cta glass-card reveal">
       <h3 id="svc-cta-title">Interested in working together?</h3>
       <a href="index.html#contact" class="btn btn-primary" id="svc-cta-btn">Get in Touch</a>
     </div>
@@ -126,7 +126,7 @@
     document.getElementById('svc-cta-btn').textContent = d.cta_button;
 
     document.getElementById('svc-sections').innerHTML = d.sections.map(s => `
-      <div class="svc-card glass-card">
+      <div class="svc-card glass-card reveal">
         <div class="svc-card-head">
           <span class="svc-icon">${s.icon}</span>
           <h2>${s.title}</h2>
@@ -137,11 +137,27 @@
         </ul>
       </div>
     `).join('');
+    initReveal();
+  }
+
+  function initReveal() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal:not(.revealed)').forEach(el => observer.observe(el));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme(currentTheme);
     render(currentLang);
+    document.querySelectorAll('.svc-hero.reveal, .svc-cta.reveal').forEach(el => {
+      setTimeout(() => el.classList.add('revealed'), 100);
+    });
   });
 </script>
 
