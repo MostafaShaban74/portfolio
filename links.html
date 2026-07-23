@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mostafa Shaaban — Links</title>
+  <meta name="description" content="All links — Mostafa Shaaban, Data Analyst." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; }
+    .links-page { max-width: 460px; width: 100%; text-align: center; }
+    .links-controls { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+    .links-photo {
+      width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+      margin: 0 auto 16px; display: block; border: 3px solid var(--accent);
+    }
+    .links-photo-placeholder {
+      width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px;
+      background: var(--accent-gradient); display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 2rem; color: white;
+    }
+    .links-name {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .links-tagline { color: var(--accent); font-size: 0.9rem; margin-bottom: 32px; }
+    .link-item {
+      display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+      margin-bottom: 12px; text-decoration: none; color: var(--text-primary);
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+    .link-item:hover { transform: translateY(-3px); border-color: var(--border-accent); }
+    .link-icon { font-size: 1.3rem; width: 28px; text-align: center; }
+    .links-footer { margin-top: 32px; font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .links-footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="links-page">
+  <div class="links-controls">
+    <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+    <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+  </div>
+
+  <img src="assets/images/photo.jpg" alt="Mostafa Shaaban" class="links-photo"
+    onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
+  <div class="links-photo-placeholder" id="links-photo-ph" style="display:none">MS</div>
+
+  <div class="links-name">Mostafa Shaaban</div>
+  <div class="links-tagline" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
+
+  <div id="links-list"></div>
+
+  <div class="links-footer">
+    <a href="index.html" id="links-back">← Portfolio</a> · © 2026
+  </div>
+</div>
+
+<script>
+  let currentLang = 'en';
+  let currentTheme = localStorage.getItem('theme') || 'dark';
+
+  const LINKS_DATA = {
+    en: {
+      tagline: "Data Analyst | Freelance Analytics Coach",
+      back: "← Portfolio",
+      items: [
+        { icon: "🌐", label: "Portfolio", url: "index.html" },
+        { icon: "💼", label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
+        { icon: "💻", label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: "📱", label: "WhatsApp", url: "https://wa.me/201116009820" },
+        { icon: "✈️", label: "Telegram", url: "https://t.me/M_SH_18" },
+        { icon: "📸", label: "Instagram", url: "#" },
+        { icon: "📘", label: "Facebook", url: "#" },
+        { icon: "📧", label: "Email", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+      ]
+    },
+    ar: {
+      tagline: "محلل بيانات | مدرب فريلانس",
+      back: "← البورتفوليو",
+      items: [
+        { icon: "🌐", label: "البورتفوليو", url: "index.html" },
+        { icon: "💼", label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
+        { icon: "💻", label: "GitHub", url: "https://github.com/MostafaShaban74" },
+        { icon: "📱", label: "واتساب", url: "https://wa.me/201116009820" },
+        { icon: "✈️", label: "تليجرام", url: "https://t.me/M_SH_18" },
+        { icon: "📸", label: "انستجرام", url: "#" },
+        { icon: "📘", label: "فيسبوك", url: "#" },
+        { icon: "📧", label: "إيميل", url: "mailto:m0stafa.m.sh3ban@gmail.com" }
+      ]
+    }
+  };
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  function toggleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.documentElement.setAttribute('lang', currentLang);
+    document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+    document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'AR' : 'EN';
+    render();
+  }
+
+  function render() {
+    const d = LINKS_DATA[currentLang];
+    document.getElementById('links-tagline').textContent = d.tagline;
+    document.getElementById('links-back').textContent = d.back;
+    document.getElementById('links-list').innerHTML = d.items.map(i => `
+      <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card">
+        <span class="link-icon">${i.icon}</span>
+        <span>${i.label}</span>
+      </a>
+    `).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(currentTheme);
+    render();
+  });
+</script>
+
+</body>
+</html>
