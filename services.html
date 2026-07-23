@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Mostafa Shaaban</title>
+  <meta name="description" content="Full breakdown of services offered by Mostafa Shaaban: BI dashboards, workshops, coaching, and digital products." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <style>
+    .svc-page { padding-top: 68px; }
+    .svc-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 600;
+      color: var(--text-secondary); text-decoration: none; margin: 32px 0 8px;
+      transition: color 0.2s;
+    }
+    .svc-back:hover { color: var(--accent); }
+    .svc-hero { text-align: center; padding: 40px 0 60px; }
+    .svc-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      background: var(--accent-gradient); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 12px;
+    }
+    .svc-hero p { color: var(--text-secondary); max-width: 560px; margin: 0 auto; }
+    .svc-sections { display: flex; flex-direction: column; gap: 28px; padding-bottom: 60px; }
+    .svc-card { padding: 32px; }
+    .svc-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .svc-icon { font-size: 1.8rem; }
+    .svc-card h2 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem;
+      color: var(--text-primary);
+    }
+    .svc-summary { color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 18px; }
+    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .svc-list li {
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
+      padding-left: 20px; position: relative;
+    }
+    .svc-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+    [dir="rtl"] .svc-list li { padding-left: 0; padding-right: 20px; }
+    [dir="rtl"] .svc-list li::before { left: auto; right: 0; }
+    .svc-cta { text-align: center; padding: 50px 0 80px; }
+    .svc-cta h3 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem;
+      margin-bottom: 20px; color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/photo.jpg" alt="Mostafa Shaaban"
+          onerror="this.style.display='none';document.getElementById('logo-placeholder').style.display='flex'">
+        <div class="logo-placeholder" id="logo-placeholder" style="display:none">MS</div>
+      </a>
+      <div class="nav-controls" style="margin-left:auto">
+        <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+        <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="svc-page">
+  <div class="container">
+    <a href="index.html" class="svc-back" id="svc-back">← Back to Portfolio</a>
+
+    <div class="svc-hero">
+      <h1 id="svc-hero-title">What I Can Do For You</h1>
+      <p id="svc-hero-sub"></p>
+    </div>
+
+    <div class="svc-sections" id="svc-sections"></div>
+
+    <div class="svc-cta glass-card">
+      <h3 id="svc-cta-title">Interested in working together?</h3>
+      <a href="index.html#contact" class="btn btn-primary" id="svc-cta-btn">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Mostafa Shaaban. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/services-data.js"></script>
+<script>
+  let currentLang = 'en';
+  let currentTheme = localStorage.getItem('theme') || 'dark';
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  function toggleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.documentElement.setAttribute('lang', currentLang);
+    document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+    document.body.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+    document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'AR' : 'EN';
+    render(currentLang);
+  }
+
+  function render(lang) {
+    const d = SERVICES_DATA[lang];
+    document.getElementById('svc-back').textContent = d.back;
+    document.getElementById('svc-hero-title').textContent = d.hero_title;
+    document.getElementById('svc-hero-sub').textContent = d.hero_sub;
+    document.getElementById('svc-cta-title').textContent = d.cta_title;
+    document.getElementById('svc-cta-btn').textContent = d.cta_button;
+
+    document.getElementById('svc-sections').innerHTML = d.sections.map(s => `
+      <div class="svc-card glass-card">
+        <div class="svc-card-head">
+          <span class="svc-icon">${s.icon}</span>
+          <h2>${s.title}</h2>
+        </div>
+        <p class="svc-summary">${s.summary}</p>
+        <ul class="svc-list">
+          ${s.items.map(i => `<li>${i}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(currentTheme);
+    render(currentLang);
+  });
+</script>
+
+</body>
+</html>
