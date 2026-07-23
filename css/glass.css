@@ -416,3 +416,7 @@ body::after {
   background: rgba(59,130,246,0.2);
   color: var(--text-primary);
 }
+
+.project-placeholder-4 {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
