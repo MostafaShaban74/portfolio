@@ -69,6 +69,7 @@ function renderAll(lang) {
   renderProjects(DATA[lang].projects, lang);
   renderQualification(d.qualification);
   renderCertifications(d.certifications);
+  renderServices(d.services);
   renderContact(d.contact);
   renderFooter(d.footer, d.nav);
 }
@@ -100,6 +101,35 @@ function renderHero(hero) {
   setText('hero-cta-primary', hero.cta_primary);
   setText('hero-cta-secondary', hero.cta_secondary);
   window._heroRoles = hero.roles;
+
+  const statsEl = document.getElementById('hero-stats');
+  if (statsEl && hero.stats) {
+    statsEl.innerHTML = hero.stats.map((s, i) => `
+      <div class="hero-stat-item">
+        <span class="hero-stat-number" data-target="${s.target}" data-suffix="${s.suffix}" id="hero-stat-${i}">0${s.suffix}</span>
+        <span class="hero-stat-label">${s.label}</span>
+      </div>
+    `).join('');
+    setTimeout(() => animateHeroStats(), 1300);
+  }
+}
+
+function animateHeroStats() {
+  document.querySelectorAll('.hero-stat-number').forEach(el => {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const step = Math.max(target / 40, 1);
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        el.textContent = target + suffix;
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(current) + suffix;
+      }
+    }, 30);
+  });
 }
 
 // ── About ──
@@ -161,8 +191,8 @@ function renderProjects(projects, lang) {
 
   const el = document.getElementById('projects-grid');
   if (!el) return;
-  const icons = ['📊','🛒','🥑'];
-  const gradients = ['project-placeholder-1','project-placeholder-2','project-placeholder-3'];
+  const icons = ['📊','🛒','🥑','🏭'];
+  const gradients = ['project-placeholder-1','project-placeholder-2','project-placeholder-3','project-placeholder-4'];
   el.innerHTML = projects.items.map((p, i) => `
     <div class="project-card glass-card reveal">
       <div class="project-preview">
@@ -285,6 +315,30 @@ function renderCertifications(certs) {
           </div>
         `).join('')}
       </div>
+    </div>
+  `).join('') + (certs.view_all_url ? `
+    <div class="cert-view-all-wrapper">
+      <a href="${certs.view_all_url}" target="_blank" class="btn btn-secondary">${certs.view_all_label}</a>
+    </div>
+  ` : '');
+  initScrollReveal();
+}
+
+// ── Services ──
+function renderServices(services) {
+  setText('services-section-label', services.section_label);
+  setText('services-title', services.title);
+  setText('services-cta', services.cta);
+  const ctaEl = document.getElementById('services-cta');
+  if (ctaEl) ctaEl.href = services.cta_url;
+
+  const el = document.getElementById('services-grid');
+  if (!el) return;
+  el.innerHTML = services.items.map(s => `
+    <div class="service-card glass-card reveal">
+      <div class="service-icon">${s.icon}</div>
+      <h3 class="service-name">${s.name}</h3>
+      <p class="service-desc">${s.desc}</p>
     </div>
   `).join('');
   initScrollReveal();

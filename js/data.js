@@ -18,6 +18,11 @@ const DATA = {
       brief: "Data Analyst with a financial background in Accounting, hands-on experience in Power BI, SQL & Python. Coached 300+ freelancers and reviewed 3,000+ proposals.",
       cta_primary: "Get in Touch",
       cta_secondary: "Download CV",
+      stats: [
+        { target: 300, suffix: "+", label: "Freelancers Coached" },
+        { target: 5, suffix: "+", label: "Dashboards Delivered" },
+        { target: 2, suffix: "", label: "Years Experience" }
+      ]
     },
     about: {
       section_label: "About",
@@ -103,6 +108,15 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           live: "",
           github: "https://github.com/MostafaShaban74",
           image: "assets/images/project3.png"
+        },
+        {
+          title: "AdventureWorks 2025 Analysis",
+          description: "Analyzes sales operations and supply chain performance using the AdventureWorks dataset. Identifies sales trends, top-performing products, customer purchasing patterns, and supply chain inefficiencies to support demand planning and inventory optimization.",
+          impact: "DEPI Graduation Project",
+          tags: ["Power BI", "Data Analysis", "Supply Chain"],
+          live: "",
+          github: "https://github.com/MostafaShaban74/DEPI-Graduation-Project_AdventureWorks_Analysis",
+          image: "assets/images/project4.png"
         }
       ]
     },
@@ -200,6 +214,20 @@ I believe data isn't just numbers — it's the language of better decisions.`,
             { name: "Egypt Career Summit", issuer: "British University in Egypt (BUE)", year: "2026" }
           ]
         }
+      ],
+      view_all_label: "View All Certificates",
+      view_all_url: "https://drive.google.com/drive/folders/1h07l3HCVCt-rBgK2bBdWKNi4BuaqQU1q"
+    },
+    services: {
+      section_label: "Services",
+      title: "What I Can Do For You",
+      cta: "See All Services →",
+      cta_url: "services.html",
+      items: [
+        { icon: "📊", name: "Business & BI Solutions", desc: "Interactive dashboards, data cleaning, and financial performance analysis with Power BI, Excel & SQL." },
+        { icon: "🎤", name: "Workshops & Training", desc: "Technical workshops, bootcamp mentorship, and career guidance sessions for aspiring analysts." },
+        { icon: "🎯", name: "1-on-1 Coaching", desc: "Freelance coaching, portfolio & dashboard reviews, and personalized certification study plans." },
+        { icon: "📦", name: "Digital Products", desc: "Ready-to-use Excel/Power BI templates and freelance playbooks to save you time." }
       ]
     },
     contact: {
@@ -238,6 +266,11 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       brief: "محلل بيانات بخلفية محاسبية، خبرة في Power BI و SQL و Python. درّبت +300 فريلانسر وراجعت +3,000 Proposal.",
       cta_primary: "تواصل معي",
       cta_secondary: "تحميل CV",
+      stats: [
+        { target: 300, suffix: "+", label: "فريلانسر تم تدريبهم" },
+        { target: 5, suffix: "+", label: "داشبورد تم تسليمه" },
+        { target: 2, suffix: "", label: "سنين خبرة" }
+      ]
     },
     about: {
       section_label: "من أنا",
@@ -303,6 +336,15 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           live: "",
           github: "https://github.com/MostafaShaban74",
           image: "assets/images/project3.png"
+        },
+        {
+          title: "AdventureWorks 2025 Analysis",
+          description: "يحلل هذا المشروع أداء عمليات المبيعات وسلسلة التوريد باستخدام بيانات AdventureWorks، ويحدد اتجاهات المبيعات والمنتجات الأكثر أداءً وأنماط الشراء، بالإضافة إلى نقاط الضعف في سلسلة التوريد لدعم تخطيط الطلب وتحسين المخزون.",
+          impact: "مشروع تخرج DEPI",
+          tags: ["Power BI", "Data Analysis", "Supply Chain"],
+          live: "",
+          github: "https://github.com/MostafaShaban74/DEPI-Graduation-Project_AdventureWorks_Analysis",
+          image: "assets/images/project4.png"
         }
       ]
     },
@@ -400,6 +442,20 @@ I believe data isn't just numbers — it's the language of better decisions.`,
             { name: "Egypt Career Summit", issuer: "الجامعة البريطانية في مصر (BUE)", year: "2026" }
           ]
         }
+      ],
+      view_all_label: "عرض كل الشهادات",
+      view_all_url: "https://drive.google.com/drive/folders/1h07l3HCVCt-rBgK2bBdWKNi4BuaqQU1q"
+    },
+    services: {
+      section_label: "الخدمات",
+      title: "إيه اللي أقدر أساعدك بيه",
+      cta: "شوف كل الخدمات ←",
+      cta_url: "services.html",
+      items: [
+        { icon: "📊", name: "حلول تحليل بيانات للأعمال", desc: "لوحات قيادة تفاعلية، تنظيف بيانات، وتحليل مالي باستخدام Power BI و Excel و SQL." },
+        { icon: "🎤", name: "ورش عمل وتدريب", desc: "ورش تقنية، تدريب في المعسكرات، وجلسات توجيه مهني للمحللين الطموحين." },
+        { icon: "🎯", name: "توجيه فردي", desc: "توجيه للعمل الحر، مراجعة معرض الأعمال، وخطط دراسية مخصصة للشهادات." },
+        { icon: "📦", name: "منتجات رقمية", desc: "قوالب Excel وPower BI جاهزة، وأدلة عمل حر توفر عليك الوقت." }
       ]
     },
     contact: {
