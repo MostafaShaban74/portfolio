@@ -521,8 +521,10 @@ function initNavbar() {
 function attachNavLinks() {
   document.querySelectorAll('.nav-link, .mobile-menu a').forEach(a => {
     a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href.startsWith('#')) return; // let real page links (services.html, links.html) navigate normally
       e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
+      const target = document.querySelector(href);
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
