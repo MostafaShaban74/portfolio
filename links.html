@@ -11,15 +11,13 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/glass.css" />
   <style>
-    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; }
+    body { display: block; padding: 0; }
+    .links-page-wrapper { display: flex; justify-content: center; padding: 40px 20px 80px; padding-top: 108px; }
     .links-page { max-width: 460px; width: 100%; text-align: center; }
-    .links-controls { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
     .svc-back {
-      display: block;
-      width: 100%;
-      text-align: left;
+      display: inline-flex; align-items: center; gap: 6px;
       font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
-      color: var(--text-secondary); text-decoration: none; margin-bottom: 16px;
+      color: var(--text-secondary); text-decoration: none; margin-bottom: 32px;
       transition: color 0.2s;
     }
     .svc-back:hover { color: var(--accent); }
@@ -52,23 +50,37 @@
 </head>
 <body>
 
-<div class="links-page">
-  <a href="index.html" class="svc-back" id="links-back-btn">← Back to Portfolio</a>
-  <div class="links-controls">
-    <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
-    <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/photo.jpg" alt="Mostafa Shaban"
+          onerror="this.style.display='none';document.getElementById('logo-placeholder').style.display='flex'">
+        <div class="logo-placeholder" id="logo-placeholder" style="display:none">MS</div>
+      </a>
+      <div class="nav-controls" style="margin-left:auto">
+        <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+        <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+      </div>
+    </div>
   </div>
+</nav>
 
-  <img src="assets/images/photo.jpg" alt="Mostafa Shaban" class="links-photo reveal"
-    onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
-  <div class="links-photo-placeholder reveal" id="links-photo-ph" style="display:none">MS</div>
+<div class="links-page-wrapper">
+  <div class="links-page">
+    <a href="index.html" class="svc-back" id="links-back-btn">← Back to Portfolio</a>
 
-  <div class="links-name reveal" id="links-name">Mostafa Shaban</div>
-  <div class="links-tagline reveal" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
+    <img src="assets/images/photo.jpg" alt="Mostafa Shaban" class="links-photo reveal"
+      onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
+    <div class="links-photo-placeholder reveal" id="links-photo-ph" style="display:none">MS</div>
 
-  <div id="links-list"></div>
+    <div class="links-name reveal" id="links-name">Mostafa Shaban</div>
+    <div class="links-tagline reveal" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
 
-  <div class="links-footer">© 2026 Mostafa Shaban. All rights reserved.</div>
+    <div id="links-list"></div>
+
+    <div class="links-footer">© 2026 Mostafa Shaban. All rights reserved.</div>
+  </div>
 </div>
 
 <script>
