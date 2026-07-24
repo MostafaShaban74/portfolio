@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="css/glass.css" />
   <style>
     body { display: block; padding: 0; }
-    .links-page-wrapper { display: flex; justify-content: center; padding: 40px 20px 80px; padding-top: 108px; }
-    .links-page { max-width: 460px; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .links-container-page { padding-top: 68px; }
+    .links-page-wrapper { display: flex; justify-content: center; padding: 40px 20px 80px; }
+    .links-page { max-width: 460px; width: 100%; text-align: center; }
     .svc-back {
       display: inline-flex; align-items: center; gap: 6px;
-      align-self: flex-start;
       font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
-      color: var(--text-secondary); text-decoration: none; margin-bottom: 32px;
+      color: var(--text-secondary); text-decoration: none; margin: 32px 0 8px;
       transition: color 0.2s;
     }
     .svc-back:hover { color: var(--accent); }
@@ -54,35 +54,63 @@
 <nav class="navbar">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
+
+      <a href="index.html#hero" class="nav-logo">
         <img src="assets/images/photo.jpg" alt="Mostafa Shaban"
           onerror="this.style.display='none';document.getElementById('logo-placeholder').style.display='flex'">
         <div class="logo-placeholder" id="logo-placeholder" style="display:none">MS</div>
       </a>
-      <div class="nav-controls" style="margin-left:auto">
+
+      <ul class="nav-links">
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="index.html#qualification" class="nav-link">Qualification</a></li>
+        <li><a href="index.html#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
         <a href="services.html" class="nav-btn" title="Services" aria-label="Services">🛠️</a>
-        <a href="index.html" class="nav-btn" title="Portfolio" aria-label="Portfolio">🏠</a>
+        <a href="links.html" class="nav-btn" title="All Links" aria-label="All Links">🔗</a>
         <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
         <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+
     </div>
   </div>
 </nav>
 
-<div class="links-page-wrapper">
-  <div class="links-page">
-    <a href="index.html" class="svc-back" id="links-back-btn">← Back to Portfolio</a>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#about">About</a>
+  <a href="index.html#skills">Skills</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#qualification">Qualification</a>
+  <a href="index.html#certifications">Certifications</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="services.html">🛠️ Services</a>
+  <a href="links.html">🔗 All Links</a>
+</div>
 
-    <img src="assets/images/photo.jpg" alt="Mostafa Shaban" class="links-photo reveal"
-      onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
-    <div class="links-photo-placeholder reveal" id="links-photo-ph" style="display:none">MS</div>
+<div class="container links-container-page">
+  <a href="index.html" class="svc-back" id="links-back-btn">← Back to Portfolio</a>
 
-    <div class="links-name reveal" id="links-name">Mostafa Shaban</div>
-    <div class="links-tagline reveal" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
+  <div class="links-page-wrapper">
+    <div class="links-page">
+      <img src="assets/images/photo.jpg" alt="Mostafa Shaban" class="links-photo reveal"
+        onerror="this.style.display='none';document.getElementById('links-photo-ph').style.display='flex'">
+      <div class="links-photo-placeholder reveal" id="links-photo-ph" style="display:none">MS</div>
 
-    <div id="links-list"></div>
+      <div class="links-name reveal" id="links-name">Mostafa Shaban</div>
+      <div class="links-tagline reveal" id="links-tagline">Data Analyst | Freelance Analytics Coach</div>
 
-    <div class="links-footer">© 2026 Mostafa Shaban. All rights reserved.</div>
+      <div id="links-list"></div>
+
+      <div class="links-footer">© 2026 Mostafa Shaban. All rights reserved.</div>
+    </div>
   </div>
 </div>
 

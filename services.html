@@ -55,20 +55,46 @@
 <nav class="navbar">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
+
+      <a href="index.html#hero" class="nav-logo">
         <img src="assets/images/photo.jpg" alt="Mostafa Shaban"
           onerror="this.style.display='none';document.getElementById('logo-placeholder').style.display='flex'">
         <div class="logo-placeholder" id="logo-placeholder" style="display:none">MS</div>
       </a>
-      <div class="nav-controls" style="margin-left:auto">
+
+      <ul class="nav-links">
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="index.html#qualification" class="nav-link">Qualification</a></li>
+        <li><a href="index.html#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <a href="services.html" class="nav-btn" title="Services" aria-label="Services">🛠️</a>
         <a href="links.html" class="nav-btn" title="All Links" aria-label="All Links">🔗</a>
-        <a href="index.html" class="nav-btn" title="Portfolio" aria-label="Portfolio">🏠</a>
         <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
         <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
+        <button class="hamburger" id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+
     </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#about">About</a>
+  <a href="index.html#skills">Skills</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="index.html#qualification">Qualification</a>
+  <a href="index.html#certifications">Certifications</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="services.html">🛠️ Services</a>
+  <a href="links.html">🔗 All Links</a>
+</div>
 
 <div class="svc-page">
   <div class="container">
