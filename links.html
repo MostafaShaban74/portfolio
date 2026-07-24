@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mostafa Shaban — Links</title>
+  <link rel="icon" href="assets/images/photo.jpg" type="image/jpeg" />
   <meta name="description" content="All links — Mostafa Shaban, Data Analyst." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +14,13 @@
     body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; }
     .links-page { max-width: 460px; width: 100%; text-align: center; }
     .links-controls { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+    .svc-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+      color: var(--text-secondary); text-decoration: none; margin-bottom: 16px;
+      transition: color 0.2s;
+    }
+    .svc-back:hover { color: var(--accent); }
     .links-photo {
       width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
       margin: 0 auto 16px; display: block; border: 3px solid var(--accent);
@@ -43,6 +51,7 @@
 <body>
 
 <div class="links-page">
+  <a href="index.html" class="svc-back" id="links-back-btn">← Back to Portfolio</a>
   <div class="links-controls">
     <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
     <button class="nav-btn lang-btn" id="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">AR</button>
@@ -78,7 +87,7 @@
   const LINKS_DATA = {
     en: {
       tagline: "Data Analyst | Freelance Analytics Coach",
-      back: "← Portfolio",
+      back: "← Back to Portfolio",
       items: [
         { icon: ICONS.portfolio, label: "Portfolio", url: "index.html" },
         { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
@@ -92,7 +101,7 @@
     },
     ar: {
       tagline: "محلل بيانات | مدرب فريلانس",
-      back: "← البورتفوليو",
+      back: "← رجوع للبورتفوليو",
       items: [
         { icon: ICONS.portfolio, label: "البورتفوليو", url: "index.html" },
         { icon: ICONS.linkedin, label: "LinkedIn", url: "https://linkedin.com/in/mostafa-m-shaban" },
@@ -125,6 +134,7 @@
   function render() {
     const d = LINKS_DATA[currentLang];
     document.getElementById('links-tagline').textContent = d.tagline;
+    document.getElementById('links-back-btn').textContent = d.back;
     document.getElementById('links-list').innerHTML = d.items.map((i, idx) => `
       <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card reveal" style="transition-delay:${idx * 0.06}s">
         <span class="link-icon">${i.icon}</span>
