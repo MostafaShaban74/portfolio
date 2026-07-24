@@ -20,7 +20,7 @@ const DATA = {
       cta_secondary: "Download CV",
       stats: [
         { target: 300, suffix: "+", label: "Freelancers Coached" },
-        { target: 5, suffix: "+", label: "Dashboards Delivered" },
+        { target: 20, suffix: "+", label: "Dashboards Delivered" },
         { target: 2, suffix: "", label: "Years Experience" }
       ]
     },
@@ -268,7 +268,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       cta_secondary: "تحميل CV",
       stats: [
         { target: 300, suffix: "+", label: "فريلانسر تم تدريبهم" },
-        { target: 5, suffix: "+", label: "داشبورد تم تسليمه" },
+        { target: 20, suffix: "+", label: "داشبورد تم تسليمه" },
         { target: 2, suffix: "", label: "سنين خبرة" }
       ]
     },
