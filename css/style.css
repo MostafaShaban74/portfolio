@@ -310,8 +310,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: transparent;
@@ -566,8 +566,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   border: 1px solid var(--border);
   color: var(--text-secondary);
