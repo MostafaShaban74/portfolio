@@ -92,7 +92,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project1.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "E-commerce Analytics Dashboard",
@@ -103,7 +103,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project2.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "Avocado Sales Analysis",
@@ -114,7 +114,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["Power BI", "Power Query", "DAX", "Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project3.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "AdventureWorks 2025 Analysis",
@@ -356,7 +356,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project1.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "E-commerce Analytics Dashboard",
@@ -367,7 +367,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project2.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "Avocado Sales Analysis",
@@ -378,7 +378,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
           tags: ["Power BI", "Power Query", "DAX", "Excel"],
           live: "",
           github: "https://github.com/MostafaShaban74",
-          image: "assets/images/project3.png"
+          image: "assets/images/project4.png"
         },
         {
           title: "AdventureWorks 2025 Analysis",

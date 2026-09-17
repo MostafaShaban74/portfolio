@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initNavbar();
   initHamburger();
+  initCursorGlow();
   setTimeout(startTyping, 1200);
 });
 
@@ -511,6 +512,32 @@ function startTyping() {
 // ============================================================
 // PARTICLES
 // ============================================================
+// ============================================================
+// CURSOR GLOW
+// ============================================================
+function initCursorGlow() {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let curX = mouseX, curY = mouseY;
+
+  window.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    curX += (mouseX - curX) * 0.12;
+    curY += (mouseY - curY) * 0.12;
+    glow.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
 function initParticles() {
   const canvas = document.getElementById('particles-canvas');
   if (!canvas) return;
