@@ -16,8 +16,9 @@ const DATA = {
       roles: ["Data Analyst", "Freelance Analytics Coach", "Power BI Developer", "Financial Data Analyst"],
       tagline: "We Turn Numbers into Decisions.",
       brief: "Data Analyst with a financial background in Accounting, hands-on experience in Power BI, SQL & Python. Coached 300+ freelancers and reviewed 3,000+ proposals.",
-      cta_primary: "Get in Touch",
-      cta_secondary: "Download CV",
+      cta_primary: "View Projects",
+      cta_secondary: "Get in Touch",
+      cta_tertiary: "Download CV",
       stats: [
         { target: 300, suffix: "+", label: "Freelancers Coached" },
         { target: 20, suffix: "+", label: "Dashboards Delivered" },
@@ -84,7 +85,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       items: [
         {
           title: "Sales Performance Dashboard",
-          description: "An end-to-end sales analytics solution built with Power BI and SQL, tracking KPIs across product categories, regions, and time periods. Delivered actionable insights that improved reporting efficiency by 25% and reduced report turnaround time by 20%.",
+          objective: "Sales leadership lacked a unified view of KPIs across product categories and regions, slowing decision-making.",
+          pipeline: "Built an end-to-end Power BI + SQL pipeline: cleaned raw sales data, modeled relationships, and designed interactive drill-down dashboards.",
+          impact_text: "Improved reporting efficiency by 25% and cut report turnaround time by 20%.",
           impact: "25% Efficiency ↑",
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
@@ -93,7 +96,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "E-commerce Analytics Dashboard",
-          description: "A comprehensive e-commerce performance dashboard analyzing customer behavior, sales trends, and product performance across multiple channels. Enabled data-driven decisions for inventory management and marketing spend optimization.",
+          objective: "The business needed visibility into customer behavior and product performance across multiple sales channels.",
+          pipeline: "Consolidated multi-channel data in Power BI and SQL, then built dashboards tracking sales trends and channel-level performance.",
+          impact_text: "Enabled data-driven decisions for inventory management and marketing spend optimization.",
           impact: "Multi-Channel Insights",
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
@@ -102,7 +107,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "Avocado Sales Analysis",
-          description: "A market analysis dashboard exploring avocado sales trends, regional pricing patterns, and seasonal demand fluctuations across U.S. markets. Demonstrated advanced Power Query transformations and DAX measures for dynamic time intelligence.",
+          objective: "Understand regional pricing patterns and seasonal demand fluctuations across U.S. avocado markets.",
+          pipeline: "Applied advanced Power Query transformations and DAX time-intelligence measures to model dynamic sales trends.",
+          impact_text: "Delivered a dynamic dashboard capable of tracking pricing and demand shifts across regions and seasons.",
           impact: "DAX Time Intelligence",
           tags: ["Power BI", "Power Query", "DAX", "Excel"],
           live: "",
@@ -111,7 +118,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "AdventureWorks 2025 Analysis",
-          description: "Analyzes sales operations and supply chain performance using the AdventureWorks dataset. Identifies sales trends, top-performing products, customer purchasing patterns, and supply chain inefficiencies to support demand planning and inventory optimization.",
+          objective: "Identify sales trends and supply chain inefficiencies to support demand planning and inventory optimization — as a DEPI graduation project.",
+          pipeline: "Analyzed sales operations and supply chain performance using the AdventureWorks dataset with Power BI.",
+          impact_text: "Surfaced top-performing products and customer purchasing patterns that inform inventory decisions.",
           impact: "DEPI Graduation Project",
           tags: ["Power BI", "Data Analysis", "Supply Chain"],
           live: "",
@@ -218,6 +227,33 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       view_all_label: "View All Certificates",
       view_all_url: "https://drive.google.com/drive/folders/1h07l3HCVCt-rBgK2bBdWKNi4BuaqQU1q"
     },
+    testimonials: {
+      section_label: "Testimonials",
+      title: "What People Say",
+      subtitle: "Real feedback from freelancers and participants I've coached",
+      items: [
+        {
+          quote: "I loved it, it was a lovely experience.",
+          author: "Freelance Program Participant",
+          proof: "assets/images/testimonials/proof1.png"
+        },
+        {
+          quote: "The coach was very supportive — even dedicated a full session just to help one person fully understand a gig.",
+          author: "Freelance Program Participant",
+          proof: "assets/images/testimonials/proof2.png"
+        },
+        {
+          quote: "This experience made a real difference in my freelancing journey, thanks to the coach's guidance.",
+          author: "Freelance Program Participant",
+          proof: "assets/images/testimonials/proof3.png"
+        },
+        {
+          quote: "The coach helped us understand the freelance market and how to write proposals the right way.",
+          author: "Freelance Program Participant",
+          proof: "assets/images/testimonials/proof4.png"
+        }
+      ]
+    },
     services: {
       section_label: "Services",
       title: "What I Can Do For You",
@@ -264,8 +300,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       roles: ["Data Analyst", "Freelance Analytics Coach", "Power BI Developer", "Financial Data Analyst"],
       tagline: "نحوّل الأرقام إلى قرارات.",
       brief: "محلل بيانات بخلفية محاسبية، خبرة في Power BI و SQL و Python. درّبت +300 فريلانسر وراجعت +3,000 Proposal.",
-      cta_primary: "تواصل معي",
-      cta_secondary: "تحميل CV",
+      cta_primary: "شوف المشاريع",
+      cta_secondary: "تواصل معي",
+      cta_tertiary: "تحميل CV",
       stats: [
         { target: 300, suffix: "+", label: "فريلانسر تم تدريبهم" },
         { target: 20, suffix: "+", label: "داشبورد تم تسليمه" },
@@ -312,7 +349,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       items: [
         {
           title: "Sales Performance Dashboard",
-          description: "حل تحليلي متكامل للمبيعات باستخدام Power BI و SQL، يتتبع KPIs عبر فئات المنتجات والمناطق والفترات الزمنية. حقق تحسيناً بنسبة 25% في كفاءة التقارير وتقليل وقت الإنجاز بنسبة 20%.",
+          objective: "إدارة المبيعات ما كان عندها رؤية موحدة لـ KPIs عبر فئات المنتجات والمناطق، وده كان بيأخر القرارات.",
+          pipeline: "بنيت Pipeline كامل بـ Power BI و SQL: تنظيف بيانات المبيعات، بناء Data Model، وتصميم Dashboards تفاعلية بـ Drill-down.",
+          impact_text: "حسّن كفاءة التقارير بنسبة 25% وقلل وقت الإنجاز بنسبة 20%.",
           impact: "25% تحسين في الكفاءة ↑",
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
@@ -321,7 +360,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "E-commerce Analytics Dashboard",
-          description: "Dashboard شامل لأداء التجارة الإلكترونية يحلل سلوك العملاء واتجاهات المبيعات وأداء المنتجات عبر قنوات متعددة. مكّن من اتخاذ قرارات مبنية على البيانات لإدارة المخزون.",
+          objective: "الشركة كانت محتاجة رؤية واضحة لسلوك العملاء وأداء المنتجات عبر قنوات بيع متعددة.",
+          pipeline: "جمّعت بيانات القنوات المختلفة في Power BI و SQL، وبنيت Dashboards تتبع اتجاهات المبيعات وأداء كل قناة.",
+          impact_text: "مكّن من اتخاذ قرارات مبنية على البيانات لإدارة المخزون وتحسين الإنفاق التسويقي.",
           impact: "رؤى متعددة القنوات",
           tags: ["SQL", "Power BI", "Advanced Excel"],
           live: "",
@@ -330,7 +371,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "Avocado Sales Analysis",
-          description: "Dashboard لتحليل سوق الأفوكادو يستعرض اتجاهات المبيعات وأنماط التسعير الإقليمية وتقلبات الطلب الموسمية عبر الأسواق الأمريكية. يوضح تحويلات Power Query المتقدمة ومقاييس DAX.",
+          objective: "فهم أنماط التسعير الإقليمية وتقلبات الطلب الموسمية عبر الأسواق الأمريكية للأفوكادو.",
+          pipeline: "استخدمت تحويلات Power Query متقدمة ومقاييس DAX لـ Time Intelligence لنمذجة اتجاهات المبيعات الديناميكية.",
+          impact_text: "سلّمت Dashboard ديناميكي قادر على تتبع التغيرات في التسعير والطلب عبر المناطق والمواسم.",
           impact: "DAX Time Intelligence",
           tags: ["Power BI", "Power Query", "DAX", "Excel"],
           live: "",
@@ -339,7 +382,9 @@ I believe data isn't just numbers — it's the language of better decisions.`,
         },
         {
           title: "AdventureWorks 2025 Analysis",
-          description: "يحلل هذا المشروع أداء عمليات المبيعات وسلسلة التوريد باستخدام بيانات AdventureWorks، ويحدد اتجاهات المبيعات والمنتجات الأكثر أداءً وأنماط الشراء، بالإضافة إلى نقاط الضعف في سلسلة التوريد لدعم تخطيط الطلب وتحسين المخزون.",
+          objective: "تحديد اتجاهات المبيعات ونقاط الضعف في سلسلة التوريد لدعم تخطيط الطلب — كمشروع تخرج DEPI.",
+          pipeline: "حللت أداء عمليات المبيعات وسلسلة التوريد باستخدام بيانات AdventureWorks على Power BI.",
+          impact_text: "استخرجت المنتجات الأكثر أداءً وأنماط شراء العملاء اللي تدعم قرارات المخزون.",
           impact: "مشروع تخرج DEPI",
           tags: ["Power BI", "Data Analysis", "Supply Chain"],
           live: "",
@@ -445,6 +490,33 @@ I believe data isn't just numbers — it's the language of better decisions.`,
       ],
       view_all_label: "عرض كل الشهادات",
       view_all_url: "https://drive.google.com/drive/folders/1h07l3HCVCt-rBgK2bBdWKNi4BuaqQU1q"
+    },
+    testimonials: {
+      section_label: "آراء",
+      title: "رأي المشاركين",
+      subtitle: "تقييمات حقيقية من فريلانسرز ومتدربين قمت بتدريبهم",
+      items: [
+        {
+          quote: "تجربة حلوة جداً واستفدت منها بشكل كبير.",
+          author: "مشارك في برنامج الفريلانسنج",
+          proof: "assets/images/testimonials/proof1.png"
+        },
+        {
+          quote: "الكوتش كان متعاون جداً، وحتى خصص سيشن كامل لمساعدة فرد واحد لحد ما يفهم المطلوب.",
+          author: "مشارك في برنامج الفريلانسنج",
+          proof: "assets/images/testimonials/proof2.png"
+        },
+        {
+          quote: "التجربة فرقت معايا جداً في رحلتي في الفريلانسنج بفضل توجيهات الكوتش.",
+          author: "مشارك في برنامج الفريلانسنج",
+          proof: "assets/images/testimonials/proof3.png"
+        },
+        {
+          quote: "الكوتش ساعدنا نفهم سوق العمل الحر وإزاي نكتب البروبوزالز بالطريقة الصحيحة.",
+          author: "مشارك في برنامج الفريلانسنج",
+          proof: "assets/images/testimonials/proof4.png"
+        }
+      ]
     },
     services: {
       section_label: "الخدمات",

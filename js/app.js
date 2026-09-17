@@ -69,6 +69,7 @@ function renderAll(lang) {
   renderProjects(DATA[lang].projects, lang);
   renderQualification(d.qualification);
   renderCertifications(d.certifications);
+  renderTestimonials(d.testimonials);
   renderServices(d.services);
   renderContact(d.contact);
   renderFooter(d.footer, d.nav);
@@ -103,6 +104,12 @@ function renderHero(hero) {
   setText('hero-brief', hero.brief);
   setText('hero-cta-primary', hero.cta_primary);
   setText('hero-cta-secondary', hero.cta_secondary);
+  const cvLink = document.getElementById('hero-cta-tertiary');
+  if (cvLink && hero.cta_tertiary) {
+    const svg = cvLink.querySelector('svg');
+    cvLink.textContent = hero.cta_tertiary;
+    if (svg) cvLink.prepend(svg);
+  }
   window._heroRoles = hero.roles;
 
   const statsEl = document.getElementById('hero-stats');
@@ -148,10 +155,13 @@ function renderAbout(about) {
       <div class="about-info-item">
         <span>${item.icon}</span>
         ${item.href
-          ? `<a href="${item.href}">${item.label}</a>`
+          ? (item.href.startsWith('mailto:')
+              ? `<a href="${item.href}" class="copy-email" data-email="${item.href.replace('mailto:', '')}">${item.label}</a>`
+              : `<a href="${item.href}">${item.label}</a>`)
           : `<span>${item.label}</span>`}
       </div>
     `).join('');
+    bindCopyEmail();
   }
 
   const statsEl = document.getElementById('about-stats');
@@ -199,7 +209,7 @@ function renderProjects(projects, lang) {
   el.innerHTML = projects.items.map((p, i) => `
     <div class="project-card glass-card reveal">
       <div class="project-preview">
-        <img src="${p.image}" alt="${p.title}" loading="lazy"
+        <img src="${p.image}" alt="${p.title} — dashboard preview" loading="lazy"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="project-preview-placeholder ${gradients[i]}" style="display:none">
           <span class="placeholder-icon">${icons[i]}</span>
@@ -210,17 +220,21 @@ function renderProjects(projects, lang) {
       <div class="project-body">
         <div class="project-title">${p.title}</div>
         <span class="project-impact mono">${p.impact}</span>
-        <p class="project-desc">${p.description}</p>
+        <div class="project-case-study">
+          <p class="cs-line"><strong>${lang === 'ar' ? 'التحدي' : 'Objective'}:</strong> ${p.objective}</p>
+          <p class="cs-line"><strong>${lang === 'ar' ? 'الحل' : 'Pipeline'}:</strong> ${p.pipeline}</p>
+          <p class="cs-line"><strong>${lang === 'ar' ? 'النتيجة' : 'Impact'}:</strong> ${p.impact_text}</p>
+        </div>
         <div class="project-tags">
           ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
         <div class="project-links">
           <a href="${p.live || '#'}"
             class="project-link live ${!p.live ? 'disabled' : ''}"
-            ${p.live ? 'target="_blank"' : ''}>
+            ${p.live ? 'target="_blank" rel="noopener noreferrer"' : ''}>
             ↗ ${lang === 'ar' ? 'Dashboard مباشر' : 'Live Dashboard'}
           </a>
-          <a href="${p.github}" target="_blank" class="project-link source">
+          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link source">
             &lt;/&gt; ${lang === 'ar' ? 'الكود' : 'Source Code'}
           </a>
         </div>
@@ -328,6 +342,42 @@ function renderCertifications(certs) {
 }
 
 // ── Services ──
+// ── Testimonials ──
+function renderTestimonials(testimonials) {
+  setText('testimonials-section-label', testimonials.section_label);
+  setText('testimonials-title', testimonials.title);
+  setText('testimonials-subtitle', testimonials.subtitle);
+
+  const el = document.getElementById('testimonials-grid');
+  if (!el) return;
+  el.innerHTML = testimonials.items.map(t => `
+    <div class="testimonial-card glass-card reveal">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-quote">${t.quote}</p>
+      <div class="testimonial-footer">
+        <span class="testimonial-author">${t.author}</span>
+        <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
+      </div>
+    </div>
+  `).join('');
+  initScrollReveal();
+}
+
+function openLightbox(src) {
+  const overlay = document.getElementById('lightbox-overlay');
+  const img = document.getElementById('lightbox-img');
+  if (!overlay || !img) return;
+  img.src = src;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const overlay = document.getElementById('lightbox-overlay');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 function renderServices(services) {
   setText('services-section-label', services.section_label);
   setText('services-title', services.title);
@@ -338,11 +388,11 @@ function renderServices(services) {
   const el = document.getElementById('services-grid');
   if (!el) return;
   el.innerHTML = services.items.map(s => `
-    <div class="service-card glass-card reveal">
+    <a href="#contact" class="service-card glass-card reveal">
       <div class="service-icon">${s.icon}</div>
       <h3 class="service-name">${s.name}</h3>
       <p class="service-desc">${s.desc}</p>
-    </div>
+    </a>
   `).join('');
   initScrollReveal();
 }
@@ -367,10 +417,13 @@ function renderContact(contact) {
       <div class="contact-info-item">
         <span>${item.icon}</span>
         ${item.href
-          ? `<a href="${item.href}">${item.label}</a>`
+          ? (item.href.startsWith('mailto:')
+              ? `<a href="${item.href}" class="copy-email" data-email="${item.href.replace('mailto:', '')}">${item.label}</a>`
+              : `<a href="${item.href}">${item.label}</a>`)
           : `<span>${item.label}</span>`}
       </div>
     `).join('');
+    bindCopyEmail();
   }
 }
 
@@ -395,6 +448,34 @@ function renderFooter(footer, nav) {
 function setText(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text;
+}
+
+function bindCopyEmail() {
+  document.querySelectorAll('.copy-email').forEach(el => {
+    if (el.dataset.bound) return;
+    el.dataset.bound = 'true';
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      const email = el.dataset.email;
+      navigator.clipboard.writeText(email).then(() => showCopyToast()).catch(() => {
+        window.location.href = 'mailto:' + email;
+      });
+    });
+  });
+}
+
+function showCopyToast() {
+  let toast = document.getElementById('copy-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'copy-toast';
+    toast.className = 'copy-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = '✓ Email copied!';
+  toast.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
 // ============================================================
