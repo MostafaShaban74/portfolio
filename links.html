@@ -51,6 +51,8 @@
 </head>
 <body>
 
+<div class="cursor-glow" id="cursor-glow"></div>
+
 <nav class="navbar">
   <div class="container">
     <div class="nav-inner">
@@ -198,7 +200,7 @@
     document.getElementById('links-tagline').textContent = d.tagline;
     document.getElementById('links-back-btn').textContent = d.back;
     document.getElementById('links-list').innerHTML = d.items.map((i, idx) => `
-      <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" class="link-item glass-card reveal" style="transition-delay:${idx * 0.06}s">
+      <a href="${i.url}" target="${i.url.startsWith('http') ? '_blank' : '_self'}" ${i.url.startsWith('http') ? 'rel="noopener noreferrer"' : ''} class="link-item glass-card reveal" style="transition-delay:${idx * 0.06}s">
         <span class="link-icon">${i.icon}</span>
         <span>${i.label}</span>
       </a>
@@ -208,9 +210,27 @@
     }, 100);
   }
 
+  function initCursorGlow() {
+    const glow = document.getElementById('cursor-glow');
+    if (!glow) return;
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let curX = mouseX, curY = mouseY;
+    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    function animate() {
+      curX += (mouseX - curX) * 0.12;
+      curY += (mouseY - curY) * 0.12;
+      glow.style.transform = `translate(${curX}px, ${curY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme(currentTheme);
     render();
+    initCursorGlow();
   });
 </script>
 
