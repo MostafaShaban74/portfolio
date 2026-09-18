@@ -3,6 +3,32 @@
 // To update: edit this file only. No need to touch HTML/CSS.
 // ============================================================
 
+// ============================================================
+// TESTIMONIALS — shown exactly as given, not translated
+// ============================================================
+const TESTIMONIALS_SHARED = [
+  {
+    quote: "I loved it it was a lovely experience.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof1.png"
+  },
+  {
+    quote: "الكوتش متعاون جدا وحتى كان بيخصص سيشنز كاملة علشان يساعد واحد ويوصل المعلومة للكل.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof2.png"
+  },
+  {
+    quote: "كله ممتاز، تجربة فرقت معايا جداً في الفريلانسنج بفضل توجيهات الكوتش.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof3.png"
+  },
+  {
+    quote: "الكوتش عرفنا كتابة البروبوزال بطريقة صحيحة وساعدنا في تحقيق نتائج مشاريع.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof4.png"
+  }
+];
+
 const DATA = {
   en: {
     nav: {
@@ -230,29 +256,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
     testimonials: {
       section_label: "Testimonials",
       title: "What People Say",
-      subtitle: "Real feedback from freelancers and participants I've coached",
-      items: [
-        {
-          quote: "I loved it, it was a lovely experience.",
-          author: "Freelance Program Participant",
-          proof: "assets/images/testimonials/proof1.png"
-        },
-        {
-          quote: "The coach was very supportive — even dedicated a full session just to help one person fully understand a gig.",
-          author: "Freelance Program Participant",
-          proof: "assets/images/testimonials/proof2.png"
-        },
-        {
-          quote: "This experience made a real difference in my freelancing journey, thanks to the coach's guidance.",
-          author: "Freelance Program Participant",
-          proof: "assets/images/testimonials/proof3.png"
-        },
-        {
-          quote: "The coach helped us understand the freelance market and how to write proposals the right way.",
-          author: "Freelance Program Participant",
-          proof: "assets/images/testimonials/proof4.png"
-        }
-      ]
+      subtitle: "Real feedback from freelancers and participants I've coached"
     },
     services: {
       section_label: "Services",
@@ -494,29 +498,7 @@ I believe data isn't just numbers — it's the language of better decisions.`,
     testimonials: {
       section_label: "آراء",
       title: "رأي المشاركين",
-      subtitle: "تقييمات حقيقية من فريلانسرز ومتدربين قمت بتدريبهم",
-      items: [
-        {
-          quote: "تجربة حلوة جداً واستفدت منها بشكل كبير.",
-          author: "مشارك في برنامج الفريلانسنج",
-          proof: "assets/images/testimonials/proof1.png"
-        },
-        {
-          quote: "الكوتش كان متعاون جداً، وحتى خصص سيشن كامل لمساعدة فرد واحد لحد ما يفهم المطلوب.",
-          author: "مشارك في برنامج الفريلانسنج",
-          proof: "assets/images/testimonials/proof2.png"
-        },
-        {
-          quote: "التجربة فرقت معايا جداً في رحلتي في الفريلانسنج بفضل توجيهات الكوتش.",
-          author: "مشارك في برنامج الفريلانسنج",
-          proof: "assets/images/testimonials/proof3.png"
-        },
-        {
-          quote: "الكوتش ساعدنا نفهم سوق العمل الحر وإزاي نكتب البروبوزالز بالطريقة الصحيحة.",
-          author: "مشارك في برنامج الفريلانسنج",
-          proof: "assets/images/testimonials/proof4.png"
-        }
-      ]
+      subtitle: "تقييمات حقيقية من فريلانسرز ومتدربين قمت بتدريبهم"
     },
     services: {
       section_label: "الخدمات",

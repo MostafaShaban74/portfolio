@@ -351,10 +351,10 @@ function renderTestimonials(testimonials) {
 
   const el = document.getElementById('testimonials-grid');
   if (!el) return;
-  el.innerHTML = testimonials.items.map(t => `
+  el.innerHTML = TESTIMONIALS_SHARED.map(t => `
     <div class="testimonial-card glass-card reveal">
       <div class="testimonial-quote-mark">"</div>
-      <p class="testimonial-quote">${t.quote}</p>
+      <p class="testimonial-quote" dir="auto">${t.quote}</p>
       <div class="testimonial-footer">
         <span class="testimonial-author">${t.author}</span>
         <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
@@ -369,13 +369,19 @@ function openLightbox(src) {
   const img = document.getElementById('lightbox-img');
   if (!overlay || !img) return;
   img.src = src;
+  overlay.style.display = 'flex';
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
   const overlay = document.getElementById('lightbox-overlay');
-  if (overlay) overlay.classList.remove('open');
+  const img = document.getElementById('lightbox-img');
+  if (overlay) {
+    overlay.style.display = 'none';
+    overlay.classList.remove('open');
+  }
+  if (img) img.src = '';
   document.body.style.overflow = '';
 }
 
