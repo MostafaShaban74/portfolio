@@ -13,7 +13,17 @@ const TESTIMONIALS_SHARED = [
     proof: "assets/images/testimonials/proof1.png"
   },
   {
+    quote: "مفيش عيوب، الإرتفاع كان سريع ومنظم واستفدنا في وقت قصير.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof1.png"
+  },
+  {
     quote: "الكوتش متعاون جدا وحتى كان بيخصص سيشنز كاملة علشان يساعد واحد ويوصل المعلومة للكل.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof2.png"
+  },
+  {
+    quote: "لا توجد عيوب، اهتمام الكوتش بكل واحد فينا كان ملحوظ جداً.",
     author: "Freelance Program Participant",
     proof: "assets/images/testimonials/proof2.png"
   },
@@ -23,7 +33,17 @@ const TESTIMONIALS_SHARED = [
     proof: "assets/images/testimonials/proof3.png"
   },
   {
-    quote: "الكوتش عرفنا كتابة البروبوزال بطريقة صحيحة وساعدنا في تحقيق نتائج مشاريع.",
+    quote: "الإيجابيات: التطبيق العملي، مفيش أي تكرار للمعلومات، دايماً في جديد.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof3.png"
+  },
+  {
+    quote: "نعم، عرفنا كتابة البروبوزال بطريقة صحيحة وساعدنا في تحقيق الجيجز.",
+    author: "Freelance Program Participant",
+    proof: "assets/images/testimonials/proof4.png"
+  },
+  {
+    quote: "كله تمام، شوية شباب زي الفل.",
     author: "Freelance Program Participant",
     proof: "assets/images/testimonials/proof4.png"
   }

@@ -344,6 +344,9 @@ function renderCertifications(certs) {
 
 // ── Services ──
 // ── Testimonials ──
+let _testimonialIndex = 0;
+let _testimonialTimer = null;
+
 function renderTestimonials(testimonials) {
   setText('testimonials-section-label', testimonials.section_label);
   setText('testimonials-title', testimonials.title);
@@ -351,17 +354,35 @@ function renderTestimonials(testimonials) {
 
   const el = document.getElementById('testimonials-grid');
   if (!el) return;
-  el.innerHTML = TESTIMONIALS_SHARED.map(t => `
-    <div class="testimonial-card glass-card reveal">
-      <div class="testimonial-quote-mark">"</div>
-      <p class="testimonial-quote" dir="auto">${t.quote}</p>
-      <div class="testimonial-footer">
-        <span class="testimonial-author">${t.author}</span>
-        <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
+
+  function draw() {
+    const total = TESTIMONIALS_SHARED.length;
+    const visible = [];
+    for (let i = 0; i < 3; i++) {
+      visible.push(TESTIMONIALS_SHARED[(_testimonialIndex + i) % total]);
+    }
+    el.innerHTML = visible.map(t => `
+      <div class="testimonial-card glass-card reveal revealed">
+        <div class="testimonial-quote-mark">"</div>
+        <p class="testimonial-quote" dir="auto">${t.quote}</p>
+        <div class="testimonial-footer">
+          <span class="testimonial-author">${t.author}</span>
+          <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
+        </div>
       </div>
-    </div>
-  `).join('');
-  initScrollReveal();
+    `).join('');
+  }
+
+  draw();
+  clearInterval(_testimonialTimer);
+  _testimonialTimer = setInterval(() => {
+    _testimonialIndex = (_testimonialIndex + 1) % TESTIMONIALS_SHARED.length;
+    el.classList.add('fading');
+    setTimeout(() => {
+      draw();
+      el.classList.remove('fading');
+    }, 250);
+  }, 4500);
 }
 
 function openLightbox(src) {
