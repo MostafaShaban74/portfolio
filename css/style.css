@@ -1550,3 +1550,26 @@ textarea:focus-visible,
   max-width: 320px;
   padding: 20px;
 }
+
+/* ── Testimonials Dots ── */
+.testimonials-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+.testimonial-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+.testimonial-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: var(--accent-gradient);
+}
