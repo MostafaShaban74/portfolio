@@ -1536,9 +1536,11 @@ textarea:focus-visible,
   .cursor-glow { display: none; }
 }
 
-/* ── Testimonials Carousel Fade ── */
-.testimonials-grid { transition: opacity 0.25s ease; }
-.testimonials-grid.fading { opacity: 0; }
+/* ── Testimonials Carousel — hero-style entrance ── */
+.testimonial-enter {
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
 .lightbox-error {
   color: white;
