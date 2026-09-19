@@ -361,8 +361,8 @@ function renderTestimonials(testimonials) {
     for (let i = 0; i < 3; i++) {
       visible.push(TESTIMONIALS_SHARED[(_testimonialIndex + i) % total]);
     }
-    el.innerHTML = visible.map(t => `
-      <div class="testimonial-card glass-card reveal revealed">
+    el.innerHTML = visible.map((t, i) => `
+      <div class="testimonial-card glass-card testimonial-enter" style="animation-delay:${i * 0.12}s">
         <div class="testimonial-quote-mark">"</div>
         <p class="testimonial-quote" dir="auto">${t.quote}</p>
         <div class="testimonial-footer">
@@ -377,11 +377,7 @@ function renderTestimonials(testimonials) {
   clearInterval(_testimonialTimer);
   _testimonialTimer = setInterval(() => {
     _testimonialIndex = (_testimonialIndex + 1) % TESTIMONIALS_SHARED.length;
-    el.classList.add('fading');
-    setTimeout(() => {
-      draw();
-      el.classList.remove('fading');
-    }, 250);
+    draw();
   }, 4500);
 }
 
