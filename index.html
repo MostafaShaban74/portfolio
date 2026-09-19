@@ -238,7 +238,10 @@
 
 <!-- Lightbox for testimonial proof images -->
 <div class="lightbox-overlay" id="lightbox-overlay" style="display:none" onclick="closeLightbox()">
-  <img src="" alt="Testimonial proof" id="lightbox-img" onclick="event.stopPropagation()">
+  <img src="" alt="Testimonial proof" id="lightbox-img" onclick="event.stopPropagation()"
+    onerror="this.style.display='none'; document.getElementById('lightbox-error').style.display='block'"
+    onload="this.style.display='block'; document.getElementById('lightbox-error').style.display='none'">
+  <p class="lightbox-error" id="lightbox-error" style="display:none">Image not found — check assets/images/testimonials/ on the server.</p>
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
 </div>
 
