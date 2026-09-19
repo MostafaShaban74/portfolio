@@ -344,7 +344,7 @@ function renderCertifications(certs) {
 
 // ── Services ──
 // ── Testimonials ──
-let _testimonialIndex = 0;
+let _testimonialGroup = 0;
 let _testimonialTimer = null;
 
 function renderTestimonials(testimonials) {
@@ -353,13 +353,17 @@ function renderTestimonials(testimonials) {
   setText('testimonials-subtitle', testimonials.subtitle);
 
   const el = document.getElementById('testimonials-grid');
+  const dotsEl = document.getElementById('testimonials-dots');
   if (!el) return;
 
+  const total = TESTIMONIALS_SHARED.length;
+  const groupCount = Math.ceil(total / 3);
+
   function draw() {
-    const total = TESTIMONIALS_SHARED.length;
+    const startIdx = _testimonialGroup * 3;
     const visible = [];
     for (let i = 0; i < 3; i++) {
-      visible.push(TESTIMONIALS_SHARED[(_testimonialIndex + i) % total]);
+      visible.push(TESTIMONIALS_SHARED[(startIdx + i) % total]);
     }
     el.innerHTML = visible.map((t, i) => `
       <div class="testimonial-card glass-card testimonial-enter" style="animation-delay:${i * 0.12}s">
@@ -371,14 +375,35 @@ function renderTestimonials(testimonials) {
         </div>
       </div>
     `).join('');
+
+    if (dotsEl) {
+      dotsEl.innerHTML = Array.from({ length: groupCount }).map((_, i) => `
+        <button class="testimonial-dot ${i === _testimonialGroup ? 'active' : ''}"
+          aria-label="Show testimonials group ${i + 1}"
+          onclick="goToTestimonialGroup(${i})"></button>
+      `).join('');
+    }
   }
+
+  window._testimonialDraw = draw;
+  window._testimonialGroupCount = groupCount;
 
   draw();
   clearInterval(_testimonialTimer);
   _testimonialTimer = setInterval(() => {
-    _testimonialIndex = (_testimonialIndex + 1) % TESTIMONIALS_SHARED.length;
+    _testimonialGroup = (_testimonialGroup + 1) % groupCount;
     draw();
-  }, 4500);
+  }, 5000);
+}
+
+function goToTestimonialGroup(i) {
+  _testimonialGroup = i;
+  if (window._testimonialDraw) window._testimonialDraw();
+  clearInterval(_testimonialTimer);
+  _testimonialTimer = setInterval(() => {
+    _testimonialGroup = (_testimonialGroup + 1) % window._testimonialGroupCount;
+    window._testimonialDraw();
+  }, 5000);
 }
 
 function openLightbox(src) {
