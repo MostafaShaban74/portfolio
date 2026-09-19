@@ -344,65 +344,68 @@ function renderCertifications(certs) {
 
 // ── Services ──
 // ── Testimonials ──
-let _testimonialGroup = 0;
 let _testimonialTimer = null;
+let _testimonialGroupCount = 1;
 
 function renderTestimonials(testimonials) {
   setText('testimonials-section-label', testimonials.section_label);
   setText('testimonials-title', testimonials.title);
   setText('testimonials-subtitle', testimonials.subtitle);
 
-  const el = document.getElementById('testimonials-grid');
+  const track = document.getElementById('testimonials-grid');
   const dotsEl = document.getElementById('testimonials-dots');
-  if (!el) return;
+  if (!track) return;
 
   const total = TESTIMONIALS_SHARED.length;
   const groupCount = Math.ceil(total / 3);
+  _testimonialGroupCount = groupCount;
 
-  function draw() {
-    const startIdx = _testimonialGroup * 3;
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      visible.push(TESTIMONIALS_SHARED[(startIdx + i) % total]);
-    }
-    el.innerHTML = visible.map((t, i) => `
-      <div class="testimonial-card glass-card testimonial-enter" style="animation-delay:${i * 0.12}s">
-        <div class="testimonial-quote-mark">"</div>
-        <p class="testimonial-quote" dir="auto">${t.quote}</p>
-        <div class="testimonial-footer">
-          <span class="testimonial-author">${t.author}</span>
-          <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
-        </div>
+  // Render all cards once, in a horizontal scroll-snap track
+  track.innerHTML = TESTIMONIALS_SHARED.map((t, i) => `
+    <div class="testimonial-card glass-card testimonial-enter" style="animation-delay:${(i % 3) * 0.1}s">
+      <div class="testimonial-quote-mark">"</div>
+      <p class="testimonial-quote" dir="auto">${t.quote}</p>
+      <div class="testimonial-footer">
+        <span class="testimonial-author">${t.author}</span>
+        <button class="testimonial-proof-btn" onclick="openLightbox('${t.proof}')">🔍 View Original</button>
       </div>
-    `).join('');
+    </div>
+  `).join('');
 
-    if (dotsEl) {
-      dotsEl.innerHTML = Array.from({ length: groupCount }).map((_, i) => `
-        <button class="testimonial-dot ${i === _testimonialGroup ? 'active' : ''}"
-          aria-label="Show testimonials group ${i + 1}"
-          onclick="goToTestimonialGroup(${i})"></button>
-      `).join('');
-    }
+  if (dotsEl) {
+    dotsEl.innerHTML = Array.from({ length: groupCount }).map((_, i) => `
+      <button class="testimonial-dot ${i === 0 ? 'active' : ''}"
+        aria-label="Show testimonials group ${i + 1}"
+        onclick="goToTestimonialGroup(${i})"></button>
+    `).join('');
   }
 
-  window._testimonialDraw = draw;
-  window._testimonialGroupCount = groupCount;
+  // Sync dots with manual scroll (swipe / drag)
+  track.addEventListener('scroll', () => {
+    const page = Math.round(track.scrollLeft / track.clientWidth);
+    document.querySelectorAll('.testimonial-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === page);
+    });
+  }, { passive: true });
 
-  draw();
   clearInterval(_testimonialTimer);
   _testimonialTimer = setInterval(() => {
-    _testimonialGroup = (_testimonialGroup + 1) % groupCount;
-    draw();
+    const nextPage = (Math.round(track.scrollLeft / track.clientWidth) + 1) % groupCount;
+    goToTestimonialGroup(nextPage);
   }, 5000);
 }
 
 function goToTestimonialGroup(i) {
-  _testimonialGroup = i;
-  if (window._testimonialDraw) window._testimonialDraw();
+  const track = document.getElementById('testimonials-grid');
+  if (!track) return;
+  track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+  document.querySelectorAll('.testimonial-dot').forEach((d, idx) => {
+    d.classList.toggle('active', idx === i);
+  });
   clearInterval(_testimonialTimer);
   _testimonialTimer = setInterval(() => {
-    _testimonialGroup = (_testimonialGroup + 1) % window._testimonialGroupCount;
-    window._testimonialDraw();
+    const nextPage = (Math.round(track.scrollLeft / track.clientWidth) + 1) % _testimonialGroupCount;
+    goToTestimonialGroup(nextPage);
   }, 5000);
 }
 
